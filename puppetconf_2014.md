@@ -24,6 +24,29 @@ Puppet has been an important part of DevOps and delivering on the promise of
 cloud computing. He serves as a board member for the Technology Association of
 Oregon.
 
+##### Notes
+- Automate what you can so you an work on the interesting things!
+- OUDA loop (evolving more quickly, ability to make decisions quicker)
+- Clients going native!! - Rewritten all of 'facter' in c++
+- Next generation Puppet Server
+  - porting a bunch of services into clojure
+  - "More Scaleable" puppet master (hehe)
+  - Language changes
+    - Data typing
+    - iteration
+    - "Lingua Franca" in the datacenter
+- Moduke forge:
+  - Announcing Puppet Approved modules (sigh..)
+  - Puppet Supported Modules
+- Futureparser?!
+- Puppet Applications
+  - Independent of the platform
+  - Decoupled from each other
+  - Puppet Apps available via Puppet Enterprise
+    - Puppet Node Manager
+- Instrumentation service built into the new Puppet Server
+- ha-proxy load balancer between two puppet masters
+
 
 #### 9:55am - Keynote: The Phoenix Project: Lessons Learned - Gene Kim, IT Revolution Press
 
@@ -39,6 +62,31 @@ and CTO of Tripwire for 13 years, and has researched high performing IT
 organizations for almost as long. He has written three books, including "The
 Visible Ops Handbook" and "The Phoenix Project: A Novel About IT, DevOps, and
 Helping Your Business Win."
+
+##### Notes
+- Technical Debt: It is what we feel the next time we want to make a change
+- Four lessons learned
+  1. The business value of devops is even higher than we thought
+    - High performers are more agile
+    - High performers are more reliable
+    - High performers win in the marketplace
+  2. Devops is as food for dev, as it is for ops
+    - Facebook chat feature - 0 to 98 million overnight
+    - Continually tested in production!
+    - We need devops to make our work humane!
+    - Dev and Ops: We're both engineers
+      - Top predictor of IT performance was whether ops version controls all production artifacts
+  3. THe need for high-trust management
+    - Knight Capital failure - 15 min deployment error caused $440 million trading loss
+      - Change control failure solution: put one more level of signing authority to 'fix' it - increasing the distance between person deciding to do the work, vs the person doing the work
+      - Testing failure:
+        - Do more testing - increases likelihood of disaster happening
+      - Deploy more frequently!
+  4. Devops is not just for the Unicorns. Devops is for the horses, too.
+    - Devops Enterprise Summit
+      - SFO - Oct 21-23 2014
+      - http://devopsenterprise.io/
+- Corrosive downward spiral if left-unchecked
 
 
 #### 10:25am - Keynote: Trust Me - Kate Matsudaira, Popforms
@@ -60,6 +108,36 @@ key, how can you be sure you come off as trustworthy right away to the many
 people who depend on you? This talk will cover some of the science behind why
 people trust one another and give you some specific strategies to help you
 build trust and level up your career.
+
+##### Notes
+
+- What happened to merit?
+- How do you judge performance? Performance is subjective
+- How do you get noticed? - The more autonomy = less your manager knows what you're doing (i.e. ambiguity)
+- All this leads to trust - Trust is like money
+- Are you a good investment? Success is contingent on trust.
+- Does your boss trust you? Do you peers trust you? Have you done a good job to earn their trust?
+
+Building Trust
+
+1. Declaration of Independence
+  - Contribution
+  - Does your work amtter?
+  - Schedule a weekly planning session with yourself
+  - Where can you fill in the gaps
+  - Manage your manager (hehe)
+    - Don't use 1-on-1's as 'status' meetings. It is a waste of time.
+    - "Do you have any feedback for me"
+  - You should send your status in email every week (keep it brief)
+
+2. Police Badge
+  - Reputation
+  - success doesn't come from hard work, success comes from people
+  - Be the model teammate
+  - Help others make things happen
+
+3. Oprah
+  - Relationship architecture
 
 
 #### 11:10am - Infrastructure-as-Code with Puppet Enterprise in the Cloud - Evan Scheessele, HP
@@ -89,6 +167,8 @@ We will talk about deep integration with PuppetDB, and Puppet roles and
 profiles across our portfolio of diverse applications. We've also leveraged
 Hiera, extending it with Hiera-HTTP to make a developer portal that allows
 product teams self-service control over stacks' data configuration management.
+
+##### Notes
 
 
 #### 1:30pm - "Sensu and Sensibility" - The Story of a Journey From #monitoringsucks to #monitoringlove - Tomas Doran, Yelp
