@@ -184,7 +184,7 @@ Tuesday September 23, 2014 1:30pm - 2:10pm
 ##### Location
 Salon 7-9 (Lower B2)
 
-#### About
+##### About
 As the Yelp infrastructure and engineering team grew, so did the pain of
 managing Nagios. Problems like splitting alerting across multiple teams,
          providing high availability, and managing Nagios systems in multiple
@@ -201,6 +201,63 @@ This talk will cover our puppet 'monitoring_check' API (which sets up
 our custom handlers and escalations, along with how we provide automatic 'self
 service' monitoring for dynamic services and deal with the challenges posed by
 the more ephemeral nature of cloud architectures.
+
+##### Notes
+
+- How monitoring either helps or hinders dev + ops collaboration
+
+- Started with Nagios
+  - Low developer visibility about production
+  - hehe "disaster girl"
+  - Escalation of issues are hard
+  - Ops ignore alerts from services
+  - High friction, low trust, low visibility
+  - When your "normality' is "everything on fire" - This Is Dysfunctional (i.e. fucked up)
+
+Sensu
+  - Designed to be pluggable/extensible
+  - Arbitrary check metadata
+
+Sensu Data Flow:
+  - sensu client runs checks on each machine
+  - pushes results to rabbit
+  - clustered clients
+  - sensu server (multiple, ha)
+  - process check results, invokes handlers
+  - writes state to redis
+  - read by api
+  - all layers behind haproxy
+  - Multiple DC sensus to 'monitor' each other
+
+Sensu Handlers
+  - JIRA ticket
+  - email
+  - irc
+  - pagerduty
+  - awsprune
+
+How do checks get run
+  - every machine rus the client
+  - client managed by puppet
+  - client has a tcp socket you can connect to
+
+Single source of truth
+  - DNS is canonical for sensu servers
+  - configure things in one place
+
+Automatic Monitoring
+  - e.g. cron jobs - check successful recently
+  - cron::d
+
+User specified monitoring
+  - data lives in the service config
+  - next to the code to emit metrics
+  - nest to metadata about sla's and lb timeouts
+  - developers can push without ops
+
+Cluster checks
+  - Assert some % of machines ar ehealthy
+  - TO make a JIRA ticket, vs paging
 
 
 #### 2:20pm - DevOps Means Business - Gene Kim, IT Revolution Press & Nicole Forsgren Velasquez, Utah State University
