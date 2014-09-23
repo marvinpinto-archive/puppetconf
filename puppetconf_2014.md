@@ -260,23 +260,6 @@ Cluster checks
   - TO make a JIRA ticket, vs paging
 
 
-#### 2:20pm - DevOps Means Business - Gene Kim, IT Revolution Press & Nicole Forsgren Velasquez, Utah State University
-
-##### Date
-Tuesday September 23, 2014 2:20pm - 3:00pm
-
-##### Location
-Salon 7-9 (Lower B2)
-
-##### About
-In this session, we'll present the top predictors of business performance
-(spoiler alert: IT performance makes a difference!). Then we'll dive into
-behaviors that are proven to increase IT performance—such as continuous
-automated integration and testing—and those that had surprisingly little or no
-impact. This will help you assess the validity of tools and processes as you
-refine your DevOps practices.
-
-
 #### 3:10pm - The Seven Habits of Highly Effective Puppet Users - David Danzilio, Constant Contact
 
 ##### Date
