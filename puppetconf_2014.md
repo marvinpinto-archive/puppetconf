@@ -170,6 +170,11 @@ product teams self-service control over stacks' data configuration management.
 
 ##### Notes
 
+- Business Agility
+- Talked a lot about openstack
+- Found this talk quite 'enterprisey'
+- "Went from 1000 AWS button clicks to 1 (jenkins) button click"
+
 
 #### 1:30pm - "Sensu and Sensibility" - The Story of a Journey From #monitoringsucks to #monitoringlove - Tomas Doran, Yelp
 
