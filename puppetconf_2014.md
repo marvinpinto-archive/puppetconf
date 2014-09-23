@@ -288,6 +288,100 @@ understood Puppet deployments. In this talk, I'll share with you the behaviors
 I saw and discuss how you can turn these seemingly obvious best practices into
 habits amongst your team members.
 
+##### Notes
+
+A collection of observations of high performing puppet users
+
+1. Think like a software developer
+  - Puppet has fundamentally changed our roles
+  - System administration != software development
+  - Puppet is easy because it's a DSL (wrong!)
+    - we made it easy to write bad code!
+  - You can't expect people to be good at something they've never done before
+  - Software engineering is a mature discipline
+  - Will be particularly important in Puppet 4!
+
+2. Treat puppet like code
+  - Stop treating puppet as a bunch of configuration data
+  - Version control
+  - Documentation
+    - Should be just enough documentation for someone else to step in
+    - Someone else ~= future-you ;)
+  - Refactoring
+    - Eliminating complexity
+    - Reducing technical debt (code smell)
+  - Code Review
+    - Collaboration
+    - Communication tool
+  - Style
+    - Style GUide
+
+3. Stop, Drop, and Design
+  - DESIGN vs sit down and start writing
+  - Software needs to be designed
+  - Separation of concerns
+    - results in modular code
+  - Package, File, Service (first puppet pattern)
+  - Roles and Profiles (puppet pattern)
+  - Identify Interfaces (puppet pattern)
+    - limit your entry points
+    - What information does this module need
+    - where does it come from
+    - where does it need to go
+  - Public and private classes
+    - public should validate input and pass it onto private classes
+    - look at the '[rivate' function in stdlib
+  - Data separation
+    - Data inside your puppet code is bad
+    - Essentially makes it a singleton
+    - Virtually guaranteeting your code will need to be rewritten
+    - Hiera!
+    - params pattern
+  - Module data (emerging pattern)
+  - Stability
+    - Software needs to be behave
+    - identify a stable feature set, track them, write them down
+    - Use Semantic versioning
+    - Simplicity!
+  - UNIX philosophy
+    - Focus on your module's core functionality
+  - Hooks
+    - Provide hooks to enable/disable functionality
+  - Write modules as if they're going to be open sourced
+    - Design with someone else is mind
+
+4. Test all the things
+  - Testing has become relatively inexpensive
+  - Your infrastructure is too important not to test
+  - How
+    - puppet-syntax
+    - rspec-puppet (unit tests)
+    - beaker (integration testing framework)
+    - kitchen-ci
+    - serverspec
+  - Test First (TDD!!)
+  - Make your tests count
+  - Don't re-write your test code in yet another DSL - focus on testing your interfaces
+
+5. Continuous Integration and Deployment
+  - Automated testing
+    - Fully automated test suite
+  - Unit Tests
+    - rspec-puppet
+  - Integration Tests
+    - integration between classes & modules
+  - Acceptance tests
+    - make sure your code actually does what it does in real world conditions
+  - Test under real world conditions
+
+6. Make nice with Ruby
+  - Puppet is ruby!
+
+7. Get Involved
+  - Share your knowledge
+  - Puppet is rapidly evolving
+  - Share your modules
+
 
 #### 4:20pm - 7 Puppet Horror Stories in 7 Years - Kris Buytaert, Inuits
 
