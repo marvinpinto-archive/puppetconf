@@ -404,6 +404,34 @@ you so you don't need to spend seven days figuring out identical or similar
 problems. Instead, you can focus on building awesome stuff, rather than
 fighting trivial problems the world has already solved.
 
+##### Notes
+
+1. Deploying a puppetmaster
+  - chicken and eggs
+  - hehe "considered renaming the puppetmaster to schrodinger"
+
+2. Honor your parents or your disks will flood
+  - filebuckets - see puppet bug 2385
+
+3. Release Management
+  - RPM mirroring
+    - pulp
+    - PRM
+    = Yum Repo Server by IS24
+  - ensure => latest is not a great option if you don't control all your repositories
+
+4. We are all devs now
+  - Inside a fact included on all nodes, 'exit 0 unless condition' :)
+
+5. Software defined Network
+  - broken ipsec setup
+  - restarting tunnels solved it
+
+6. Three hard things in IT
+  - Beware what you collect!
+
+7. _hmm I think I missed one here_
+
 
 #### 5:10pm - Killer R10K Workflow - Phil Zimmerman, Time Warner Cable
 
