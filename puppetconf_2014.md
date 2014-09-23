@@ -225,6 +225,13 @@ Wednesday September 24, 2014 9:00am - 9:35am
 ##### Location
 Salon 7-9 (Lower B2)
 
+##### About
+If you are at PuppetConf, then you probably already believe in the value
+proposition of automation and consistency. But how do you transform your entire
+team to deliver on the “cloud” promise? Hear how Getty Images is building a
+puppetized culture that focuses on improving business applications and not just
+supporting the underlying technology.
+
 
 ### 9:40am - Keynote: Decentralize Your Infrastructure - Alan Green, Sony Computer Entertainment America
 
@@ -234,6 +241,12 @@ Wednesday September 24, 2014 9:40am - 10:15am
 ##### Location
 Salon 7-9 (Lower B2)
 
+##### About
+We keep asking what we think is a valid question, but a misinformed one: how do
+we centralize our infrastructure in order to distill the myriad of technologies
+we encounter? The real question is: how do we encourage innovation, and
+maintain a sense of urgency, while still managing project and budget
+constraints?
 
 ### 11:10am - Continuous Integration for Infrastructure as Code - Gareth Rushgrove, Puppet Labs
 
@@ -242,6 +255,28 @@ Wednesday September 24, 2014 11:10am - 11:50am
 
 ##### Location
 Salon 7-9 (Lower B2)
+
+##### About
+Within the Puppet community we talk a lot about testing modules, with
+rspec-puppet or, increasingly, with Beaker, but we don't often discuss what a
+complete infrastructure continuous integration pipeline might look like.
+
+Continuous integration is about bringing all the pieces of a system together as
+early as possible, to avoid problems with integration later on. That means
+looking not only at individual modules, but also at how they work together and
+how we can verify their combined behavior.
+
+This talk will cover:
+
+- Building and testing base images using Puppet, Packer, and Serverspec
+- Integration testing collections of modules using Vagrant and Cucumber
+- Writing assertions against the state of your infrastructure, based
+on data in PuppetDB and from API driven infrastructure
+- Automatically generating tests based on what Puppet knows about your
+infrastructure
+
+We'll also discuss what features Puppet is missing that would make full system
+testing easier, and what tools might look like in the future.
 
 
 ### 1:30pm - The DevOps Field Guide to Cognitive Biases (2nd Edition) - Lindsay Holmwood, Bulletproof Networks
@@ -252,6 +287,33 @@ Wednesday September 24, 2014 1:30pm - 2:10pm
 ##### Location
 Salon 4-6 (Lower B2)
 
+##### About
+Cognitive biases can deeply affect our behaviors toward others and our ability
+to process information by herding us towards mental shortcuts that are
+optimized for timeliness over accuracy, at the expense of rationalizing
+irrational behavior.
+
+In the first edition of this talk we looked at cognitive biases in the context
+of teamwork—how biases affect our ability to interact with other people and
+limit effectiveness of teams that collaboratively solve problems.
+
+In this second edition, we turn our focus to cognitive biases during high
+stress situations—outages and incidents.
+
+You know that running drills are important, but what's stopping you from doing
+them? What, during a stress-filled outage, convinces you that relationships
+between systems exist, when in hindsight it's obvious they don't? What develops
+common narratives that lead you to the same contributing factors at every
+incident retrospective?
+
+Attendees will leave the talk with an overview of biases they run into during
+incidents, how to hack their brains to use these biases to their advantage, and
+some tips on how to mitigate the effects of the limitations baked into their
+wetware.
+
+More confusion! Less rationality! Bigger cognitive dissonance! All this and
+more in the second edition of "The DevOps Field Guide to Cognitive Biases".
+
 
 ### 2:20pm - The Grand Puppet Sub-Systems Tour - Nicholas Fagerlund, Puppet Labs
 
@@ -260,6 +322,22 @@ Wednesday September 24, 2014 2:20pm - 3:00pm
 
 ##### Location
 Golden Gate A (B2)
+
+##### About
+Hey, let's talk about the indirector. And the catalog. And maybe the node
+terminus? And the configurer!
+
+Most of us treat Puppet like it consists of one or two big systems -- the
+puppet master, the agent, the CA. But each of these is built from smaller
+systems, which we don't usually think about. This talk will be a high-speed
+overview of the way Puppet's major subsystems and models fit together. We'll
+discuss how the puppet master compiles a catalog, the nature of the catalog
+itself, the type and provider system, where external data can enter the
+process, and more.
+
+You won't learn how to use Puppet from this talk! But if you've been using
+Puppet for a while and want to understand how all these dozens of pieces fit
+together, this is for you.
 
 
 ### 3:10pm - Puppetizing Multitier Architecture - Reid Vandewiele, Puppet Labs
@@ -270,6 +348,29 @@ Wednesday September 24, 2014 3:10pm - 3:50pm
 ##### Location
 Salon 10-12 (Lower B2)
 
+##### About
+
+Puppet is easy to use and understand for modeling a desired configuration state
+within the bounds of a single system. For multitier applications however, or
+configuration involving data and content distributed between variable numbers
+of systems and tiers, the modeling gets more complex.
+
+This talk will use Puppet Labs Professional Services’ implementation of a
+flexible-architecture Puppet Enterprise deployment as a case study to talk
+specifically about:
+
+- Minimizing required configuration input for multitier apps
+- Using Puppet to model variable size app tiers of expandable and contractible
+size
+- Art of the Possible and constraints to be aware of when using only pure
+Puppet and its eventual consistency configuration model
+
+The intended audience is advanced Puppet users interested in pushing Puppet to
+today’s multitier limits. The talk will incorporate specific code examples and
+a full working implementation of a Puppetized mulitier app. It will be
+accessible to general Puppet practitioners looking for an art-of-the-possible
+level understanding.
+
 
 ### 4:20pm - Orchestrated Functional Testing with Puppet-spec and Mspectator - Raphaël Pinson, Camptocamp
 
@@ -279,6 +380,13 @@ Wednesday September 24, 2014 4:20pm - 5:00pm
 ##### Location
 Salon 13-15 (Lower B2)
 
+##### About
+As Infrastructure as Code gets more widely adopted and more heavily automated,
+the need for tests is on the rise. It has now become a common practice to
+ship Puppet modules with unit and functional tests. The Puppet-spec and
+Mspectator projects aim to validate Puppet catalogs and test your fleet on
+the fly, using the serverspec library.
+
 
 ### 5:10pm - Managing the File and Exposing the API - Christopher Webber, Chef Software
 
@@ -287,4 +395,17 @@ Wednesday September 24, 2014 5:10pm - 5:50pm
 
 ##### Location
 Salon 13-15 (Lower B2)
+
+##### About
+One of the the most fundamental things we do with Puppet is manage
+configuration files. As we build up more complicated modules, we become faced
+with some interesting decisions about the APIs we expose in our modules. Does
+it make sense to pass in a template as a parameter? How about the path to a
+template? In this talk I will cover the various methods for working on files
+including augeas, the concat module, templates, and other things like custom
+types and providers. Additionally, I will touch on the different ways that
+configuration files are handled including single monolithic files and conf.d
+type patterns. With all of these elements, we will focus on how we present an
+API to the users of our modules. The hope is that we will all be better aware
+of how we can make our modules more compose-able for all.
 
