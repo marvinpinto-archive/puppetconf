@@ -511,6 +511,21 @@ team to deliver on the “cloud” promise? Hear how Getty Images is building a
 puppetized culture that focuses on improving business applications and not just
 supporting the underlying technology.
 
+##### Notes
+
+What worked for Getty:
+
+1. Organization
+  - Must have an org structure that enables soeed, delivery
+  - Focus on delivery, not technology
+
+2. People
+  - People were the key to this change at Getty
+  - Need to find a (executive) sponsor, need to also "sell sideways"
+
+3. Process
+  - Greenfield vs Brownfield?
+
 
 ### 9:40am - Keynote: Decentralize Your Infrastructure - Alan Green, Sony Computer Entertainment America
 
@@ -526,6 +541,30 @@ we centralize our infrastructure in order to distill the myriad of technologies
 we encounter? The real question is: how do we encourage innovation, and
 maintain a sense of urgency, while still managing project and budget
 constraints?
+
+##### Notes
+
+"We need to deploy, at any given time, any given service, in any given configuration, as quickly as possible."
+
+What drives our adoption of a technology?
+  - Best?
+  - Fastest?
+  - The most operational?
+  - ...
+  - Encourages us to create the most creative product possible.
+
+How do you do this better than we did?
+  - branches
+  - proper gatekeeping
+  - make your code as available as possible
+
+Be ready to scale
+  - field of dreams syndrome
+  - pre-answer your open source to enterprise transition questions
+    - when
+    - what reasons
+    - crystal ball your costs
+
 
 ### 11:10am - Continuous Integration for Infrastructure as Code - Gareth Rushgrove, Puppet Labs
 
