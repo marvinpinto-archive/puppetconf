@@ -460,6 +460,38 @@ The following will be covered:
 - Jenkins Build and Release Process
 - Puppet Deployment Process—Ship It!
 
+##### Notes
+
+R10k - tool for deploying onto masters
+
+Single Repos are not a great idea
+  - simplify development
+  - Easy jenkins flow
+  - Puppet code and hiera data together
+
+Early workflow
+
+  - Simple CI job
+  - Single release job
+  - Single deploy job
+
+Ways this failed
+  - Wait for *all* the tests to run on *all* the modules
+  - Deploy everything just to get simple changes updated on the masters
+  - Deploy everything just to get hiera data updated on the masters
+
+Early pain points
+  - Monolithic repo
+  long ci cycles
+  al or nothing deploys
+  upgrading forge modules
+
+R10K helps automate deployments & environments
+
+R10K and puppetfile - match made in heaven
+
+*There was a bunch of handwaving at this point and I stopped taking notes - might be useful to add links to the presentation/Github repo here instead*
+
 
 ## Wednesday September 24, 2014
 
