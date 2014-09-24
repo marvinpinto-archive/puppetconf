@@ -184,7 +184,7 @@ Tuesday September 23, 2014 1:30pm - 2:10pm
 ##### Location
 Salon 7-9 (Lower B2)
 
-#### About
+##### About
 As the Yelp infrastructure and engineering team grew, so did the pain of
 managing Nagios. Problems like splitting alerting across multiple teams,
          providing high availability, and managing Nagios systems in multiple
@@ -202,22 +202,62 @@ our custom handlers and escalations, along with how we provide automatic 'self
 service' monitoring for dynamic services and deal with the challenges posed by
 the more ephemeral nature of cloud architectures.
 
+##### Notes
 
-#### 2:20pm - DevOps Means Business - Gene Kim, IT Revolution Press & Nicole Forsgren Velasquez, Utah State University
+- How monitoring either helps or hinders dev + ops collaboration
 
-##### Date
-Tuesday September 23, 2014 2:20pm - 3:00pm
+- Started with Nagios
+  - Low developer visibility about production
+  - hehe "disaster girl"
+  - Escalation of issues are hard
+  - Ops ignore alerts from services
+  - High friction, low trust, low visibility
+  - When your "normality' is "everything on fire" - This Is Dysfunctional (i.e. fucked up)
 
-##### Location
-Salon 7-9 (Lower B2)
+Sensu
+  - Designed to be pluggable/extensible
+  - Arbitrary check metadata
 
-##### About
-In this session, we'll present the top predictors of business performance
-(spoiler alert: IT performance makes a difference!). Then we'll dive into
-behaviors that are proven to increase IT performance—such as continuous
-automated integration and testing—and those that had surprisingly little or no
-impact. This will help you assess the validity of tools and processes as you
-refine your DevOps practices.
+Sensu Data Flow:
+  - sensu client runs checks on each machine
+  - pushes results to rabbit
+  - clustered clients
+  - sensu server (multiple, ha)
+  - process check results, invokes handlers
+  - writes state to redis
+  - read by api
+  - all layers behind haproxy
+  - Multiple DC sensus to 'monitor' each other
+
+Sensu Handlers
+  - JIRA ticket
+  - email
+  - irc
+  - pagerduty
+  - awsprune
+
+How do checks get run
+  - every machine rus the client
+  - client managed by puppet
+  - client has a tcp socket you can connect to
+
+Single source of truth
+  - DNS is canonical for sensu servers
+  - configure things in one place
+
+Automatic Monitoring
+  - e.g. cron jobs - check successful recently
+  - cron::d
+
+User specified monitoring
+  - data lives in the service config
+  - next to the code to emit metrics
+  - nest to metadata about sla's and lb timeouts
+  - developers can push without ops
+
+Cluster checks
+  - Assert some % of machines ar ehealthy
+  - TO make a JIRA ticket, vs paging
 
 
 #### 3:10pm - The Seven Habits of Highly Effective Puppet Users - David Danzilio, Constant Contact
@@ -248,6 +288,100 @@ understood Puppet deployments. In this talk, I'll share with you the behaviors
 I saw and discuss how you can turn these seemingly obvious best practices into
 habits amongst your team members.
 
+##### Notes
+
+A collection of observations of high performing puppet users
+
+1. Think like a software developer
+  - Puppet has fundamentally changed our roles
+  - System administration != software development
+  - Puppet is easy because it's a DSL (wrong!)
+    - we made it easy to write bad code!
+  - You can't expect people to be good at something they've never done before
+  - Software engineering is a mature discipline
+  - Will be particularly important in Puppet 4!
+
+2. Treat puppet like code
+  - Stop treating puppet as a bunch of configuration data
+  - Version control
+  - Documentation
+    - Should be just enough documentation for someone else to step in
+    - Someone else ~= future-you ;)
+  - Refactoring
+    - Eliminating complexity
+    - Reducing technical debt (code smell)
+  - Code Review
+    - Collaboration
+    - Communication tool
+  - Style
+    - Style GUide
+
+3. Stop, Drop, and Design
+  - DESIGN vs sit down and start writing
+  - Software needs to be designed
+  - Separation of concerns
+    - results in modular code
+  - Package, File, Service (first puppet pattern)
+  - Roles and Profiles (puppet pattern)
+  - Identify Interfaces (puppet pattern)
+    - limit your entry points
+    - What information does this module need
+    - where does it come from
+    - where does it need to go
+  - Public and private classes
+    - public should validate input and pass it onto private classes
+    - look at the '[rivate' function in stdlib
+  - Data separation
+    - Data inside your puppet code is bad
+    - Essentially makes it a singleton
+    - Virtually guaranteeting your code will need to be rewritten
+    - Hiera!
+    - params pattern
+  - Module data (emerging pattern)
+  - Stability
+    - Software needs to be behave
+    - identify a stable feature set, track them, write them down
+    - Use Semantic versioning
+    - Simplicity!
+  - UNIX philosophy
+    - Focus on your module's core functionality
+  - Hooks
+    - Provide hooks to enable/disable functionality
+  - Write modules as if they're going to be open sourced
+    - Design with someone else is mind
+
+4. Test all the things
+  - Testing has become relatively inexpensive
+  - Your infrastructure is too important not to test
+  - How
+    - puppet-syntax
+    - rspec-puppet (unit tests)
+    - beaker (integration testing framework)
+    - kitchen-ci
+    - serverspec
+  - Test First (TDD!!)
+  - Make your tests count
+  - Don't re-write your test code in yet another DSL - focus on testing your interfaces
+
+5. Continuous Integration and Deployment
+  - Automated testing
+    - Fully automated test suite
+  - Unit Tests
+    - rspec-puppet
+  - Integration Tests
+    - integration between classes & modules
+  - Acceptance tests
+    - make sure your code actually does what it does in real world conditions
+  - Test under real world conditions
+
+6. Make nice with Ruby
+  - Puppet is ruby!
+
+7. Get Involved
+  - Share your knowledge
+  - Puppet is rapidly evolving
+  - Share your modules
+
 
 #### 4:20pm - 7 Puppet Horror Stories in 7 Years - Kris Buytaert, Inuits
 
@@ -269,6 +403,34 @@ are what build up your experience. We want to share these "aha!" moments with
 you so you don't need to spend seven days figuring out identical or similar
 problems. Instead, you can focus on building awesome stuff, rather than
 fighting trivial problems the world has already solved.
+
+##### Notes
+
+1. Deploying a puppetmaster
+  - chicken and eggs
+  - hehe "considered renaming the puppetmaster to schrodinger"
+
+2. Honor your parents or your disks will flood
+  - filebuckets - see puppet bug 2385
+
+3. Release Management
+  - RPM mirroring
+    - pulp
+    - PRM
+    = Yum Repo Server by IS24
+  - ensure => latest is not a great option if you don't control all your repositories
+
+4. We are all devs now
+  - Inside a fact included on all nodes, 'exit 0 unless condition' :)
+
+5. Software defined Network
+  - broken ipsec setup
+  - restarting tunnels solved it
+
+6. Three hard things in IT
+  - Beware what you collect!
+
+7. _hmm I think I missed one here_
 
 
 #### 5:10pm - Killer R10K Workflow - Phil Zimmerman, Time Warner Cable
@@ -297,6 +459,38 @@ The following will be covered:
 - Release Deployment Workflow (versioning, git, Jenkins and r10k)
 - Jenkins Build and Release Process
 - Puppet Deployment Process—Ship It!
+
+##### Notes
+
+R10k - tool for deploying onto masters
+
+Single Repos are not a great idea
+  - simplify development
+  - Easy jenkins flow
+  - Puppet code and hiera data together
+
+Early workflow
+
+  - Simple CI job
+  - Single release job
+  - Single deploy job
+
+Ways this failed
+  - Wait for *all* the tests to run on *all* the modules
+  - Deploy everything just to get simple changes updated on the masters
+  - Deploy everything just to get hiera data updated on the masters
+
+Early pain points
+  - Monolithic repo
+  long ci cycles
+  al or nothing deploys
+  upgrading forge modules
+
+R10K helps automate deployments & environments
+
+R10K and puppetfile - match made in heaven
+
+*There was a bunch of handwaving at this point and I stopped taking notes - might be useful to add links to the presentation/Github repo here instead*
 
 
 ## Wednesday September 24, 2014
